@@ -1,0 +1,9 @@
+ARG_ENABLE("toastnotifications", "enable Windows Toast Notifications", "no");
+
+if (PHP_TOASTNOTIFICATIONS != "no") {
+	EXTENSION("toastnotifications", "ToastNotifications.cpp", PHP_TOASTNOTIFICATIONS_SHARED, "/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1");
+
+	AC_DEFINE('HAVE_TOASTNOTIFICATIONS', 1, 'Have Toast Notifications');
+	CHECK_LIB("runtimeobject.lib", "toastnotifications", PHP_TOASTNOTIFICATIONS)
+}
+
